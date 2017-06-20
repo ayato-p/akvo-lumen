@@ -19,6 +19,9 @@
                  [meta-merge "1.0.0"]
                  [org.akvo/commons "0.4.4-SNAPSHOT" :exclusions [org.postgresql/postgresql org.clojure/java.jdbc]]
                  [org.akvo/resumed "0.1.0-SNAPSHOT"]
+                 [org.keycloak/keycloak-admin-client "3.1.0.Final"]
+                 [org.jboss.resteasy/resteasy-client "3.0.14.Final"]
+                 [org.jboss.resteasy/resteasy-jackson2-provider "3.0.14.Final"]
                  [commons-io/commons-io "2.5"]
                  [org.apache.tika/tika-core "1.14"]
                  [org.clojure/clojure "1.8.0"]
@@ -44,8 +47,9 @@
   :aliases {"setup"   ["run" "-m" "duct.util.repl/setup"]
             "migrate" ["run" "-m" "dev/migrate"]
             "seed"    ["run" "-m" "dev/seed"]}
-  :test-selectors {:default (and (constantly true)
-                                 (complement :functional))
+  :test-selectors {:default (and
+                              (constantly true)
+                              (complement :functional))
                    :all     (constantly true)}
   :profiles
   {:dev           [:project/dev  :profiles/dev]
