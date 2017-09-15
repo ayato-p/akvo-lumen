@@ -12,6 +12,8 @@ services:
    build:
      context: ./backend
      dockerfile: Dockerfile-dev
+   environment:
+     - LUMEN_ENCRYPTION_KEY=supersecret
    volumes:
       - ./backend:/app
       - ~/.m2:/root/.m2
@@ -36,5 +38,6 @@ services:
    environment:
      - NODE_ENV=development
      - PGSSLMODE=allow
+     - LUMEN_ENCRYPTION_KEY=supersecret
    volumes:
       - ./windshaft/config/dev:/config
